@@ -18,7 +18,7 @@ class App extends Component {
       </div>
       <Signup>
         <h1>sing up here</h1>
-      </Signup>
+      </Signup> 
       </>
     )
   }
