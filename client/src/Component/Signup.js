@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 
 class Signup extends Component {
 
@@ -21,9 +21,26 @@ class Signup extends Component {
     };
 
     handleSubmit(event) {
+
         console.log("sign-up handleSubmit, username: ");
         console.log(this.state.username);
         event.preventDefault();
+
+        axios.post("/user/", {
+            username: this.state.username,
+            password: this.state.password
+        }).then(response => {
+            console.log(response);
+            if (!response.data.errmsg) {
+                console.log("Successfully registed!");
+                this.setState({redirect: "/login"})
+            } else {
+                console.log("Username is already existed");
+            }
+        }).catch(error => {
+            console.log("Unable to register");
+            console.log(error)
+        })
     }
     
     render() {
