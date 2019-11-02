@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 class Signup extends Component {
     constructor() {
-        super();
+        super()
         this.state = {
             username: '',
             password: '',
-            confirmPassword: '',
+            confirmPassword: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -22,10 +22,9 @@ class Signup extends Component {
         console.log(this.state.username);
         event.preventDefault();
     }
-}
-
-render() {
-    return (
+    
+    render() {
+        return (
         <div className="SignupForm">
             <h4>Register Now</h4>
             <form className="form-horizontal">
@@ -45,5 +44,8 @@ render() {
                 </div>
             </form>
         </div>
-    )
+    );
 }
+
+};
+export default Signup;
