@@ -56,10 +56,10 @@ class App extends Component {
       <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
       {this.state.loggedIn && <p>Welcome to iEnrol, {this.state.username}!</p>}
       
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" render={() => <Home/>} />
 
       <Route path="/login" render={()
-      => <Login updateUser={this.updateUser} /> } 
+      => <Login updateUser={this.updateUser} />} 
       />
 
       <Route path="/signup" render={() => <Signup/>} />

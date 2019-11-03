@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const session = require("express-session");
 const dbConnection = require("./client/src/Component/database");
-const dbConnection = require("connect-mongo")(session);
+const MongoStore = require("connect-mongo")(session);
 const passport = require("./client/src/Component/passport");
 const app = express();
 const path = require("path");
@@ -36,9 +36,9 @@ app.use("/user", user);
 
 // Send every other request to the React app
 // Define any API routes before this runs
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port http://localhost:${PORT}!`);
