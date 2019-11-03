@@ -2,10 +2,29 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const session = require("express-session");
-const dbConnection = require("./")
+const dbConnection = require("./client/src/Component/database");
+const dbConnection = require("connect-mongo")(session);
+const passport = require("./client/src/Component/passport");
+const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3000;
-const app = express();
+
+// Route requires
+const user = require("./client/src/Component/routes/user");
+
+// Middleware
+app.use(morgan("dev"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Session
+app.use(session({
+  // random string to make the hash that is generated secure
+  secret: "stop frolicking",
+  store: new MongoStore({ mongooseConnection: dbConnection }),
+  resave: false,
+  saveUninitialized: false
+}))
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
