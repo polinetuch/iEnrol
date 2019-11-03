@@ -26,15 +26,13 @@ app.use(session({
   saveUninitialized: false
 }))
 
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+// passport
+app.use(passport.initialize());
+// call the deserializeUser
+app.use(passport.session());
 
-// Define API routes here
+// routes
+app.use("/user", user);
 
 // Send every other request to the React app
 // Define any API routes before this runs
