@@ -19,5 +19,17 @@ router.post("/", (req, res) => {
                 error: `Sorry, username is unavailable: ${username}`
             })
         }
+
+        else {
+            const newUser = new User({
+                username: username, 
+                password: password
+            });
+            
+            newUser.save((err, savedUser) => {
+                if (err) return res.json(err);
+                res.json(savedUser);
+            })
+        }
     })
 })
