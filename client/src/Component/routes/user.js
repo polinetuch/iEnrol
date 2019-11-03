@@ -63,3 +63,16 @@ router.get("/", (req, res, next) => {
     }
 });
 
+router.post("/logout", (req, res) => {
+
+    if (req.user) {
+        req.logout();
+        res.send({ msg: "Logging out.."});
+    }
+
+    else {
+        res.json({ msg: "No user to log out"});
+    }
+});
+
+module.exports = router;
