@@ -25,11 +25,17 @@ router.post("/", (req, res) => {
                 username: username, 
                 password: password
             });
-            
+
             newUser.save((err, savedUser) => {
                 if (err) return res.json(err);
                 res.json(savedUser);
             })
         }
     })
+});
+
+router.post("/login", function(req, res, next) {
+    console.log("routes/user.js, login, req.body: ");
+    console.log(req.body);
+    next();
 })
