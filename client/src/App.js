@@ -4,23 +4,24 @@ import "./App.css";
 import Signup from "./Component/Signup";
 
 class App extends Component {
-  render() {
-    return (
-      <>
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-      <Signup>
-        <h1>sing up here</h1>
-      </Signup> 
-      </>
-    )
+  constructor() {
+    super();
+    this.state = {
+      loggedIn: false,
+      username: null
+    }
+
+    this.getUser = this.getUser.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.updateUser = this.updateUser.bind(this);
+  }
+
+  componentDidMount() {
+    this.getUser();
+  }
+
+  updateUser (userObject) {
+    this.setState(userObject);
   }
 }
 
