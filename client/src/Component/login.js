@@ -30,7 +30,15 @@ class Login extends Component {
             password: this.state.password
         }).then(response => {
             console.log("Login response: ");
-            console.log(response)
+            console.log(response);
+
+            if (response.status === 200) {
+                this.props.updateUser({
+                    loggedIn: true,
+                    username: response.data.username
+                })
+                this.setState({ redirectTo: "/"});
+            }
         })
     }
 }
