@@ -1,29 +1,64 @@
-# Create React Express App
+## Simple MERN Passport Template
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-## About This Boilerplate
+Below you will find some information on how to perform common tasks.<br>
+You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+# About
+I couldn't find a simple MERN passport tutorial, so I made one!
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+## Built With
 
-## Starting the app locally
+Mongo, Express, ReactJS, Node.js, Javascript. 
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+## Getting Started
+
+Clone the repo and follow the instructions.  You can view each step by running these commands from the terminal:
 
 ```
+git checkout step-0
+git checkout step-1
+...
+```
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/en/)
+- [MongoDB](https://www.mongodb.com/)
+- [Nodemon](https://github.com/remy/nodemon)
+- [create-react-app](https://github.com/facebook/create-react-app)
+
+### Installing
+
+Run these commands in the terminal:
+
+```
+cd simple-mern-passport
 npm install
+npm run dev
 ```
 
-This should install node modules within the server and the client folder.
+# Instructions
 
-After both installations complete, run the following command in your terminal:
+Complete instructions at https://medium.com/@brendt_bly/simple-mern-passport-app-tutorial-4aec2105e367
 
-```
-npm start
-```
+### Completed Features
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+- [ ] Sign up, login and logout.
+- [ ] Authentication with passport and bcryptjs.
+- [ ] Session information stored with express sessions.
+- [ ] Store data for production in sessions with connect-mongo
 
-## Deployment (Heroku)
+### Next Steps
+- [ ] Add redux
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+## Author
+
+Brendt Bly
+
+## Acknowledgments
+
+Thanks to the people who provided great examples:
+https://code.tutsplus.com/tutorials/authenticating-nodejs-applications-with-passport--cms-21619
+
+https://github.com/thechutrain/mern-passport
