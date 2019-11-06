@@ -1,80 +1,59 @@
-// import React, { Component } from 'react';
-// var mongo = require('mongodb');
-// var assert = require('assert');
+import React from 'react';
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import '../components/admin.css';
 
-// var url = 'mongodb://localhost:21707/ienrol';
+<Table>
+<Thead>
+    <Tr>
+        <Th>Child's name</Th>
+        <Th>Age</Th>
+        <Th>Gender</Th>
+        <Th>Mother's name</Th>
+        <Th>Father's name</Th>
+        <Th>Contact Number</Th>
+    </Tr>
+</Thead>
+<Tbody>
+    <Tr>
+        <Td>31</Td>
+        <Td>2017</Td>
+        <Td>Alabama Community College System (ACCS)</Td>
+        <Td>Mr. Toner Evans, Samford University</Td>
+        <Td>Ms. Kelly Birchfield, Auburn University Montgomery</Td>
+    </Tr>
+    <Tr>
+        <Td>30</Td>
+        <Td>2016</Td>
+        <Td>Samford University</Td>
+        <Td>Ms. Angel Jowers, University of West Alabama</Td>
+        <Td>Mr. Toner Evans, Samford University</Td>
+        <Td>Academ(ia) Awards: Best Practices/Performances in IR</Td>
+    </Tr>
+    <Tr>
+        <Td>29</Td>
+        <Td>2015</Td>
+        <Td>Eufaula (Wallace Community College Dothan)</Td>
+        <Td>Dr. Annette Cederholm, Snead State Community College</Td>
+        <Td>Ms. Angel Jowers, University of West Alabama</Td>
+        <Td>Back to the Future</Td>
+    </Tr>
+    <Tr>
+        <Td>28</Td>
+        <Td>2014</Td>
+        <Td>Huntsville (J.F. Drake State Community and Technical College)</Td>
+        <Td>Dr. Jon C. Acker, The University of Alabama</Td>
+        <Td>Dr. Annette Cederholm, Snead State Community College</Td>
+        <Td>Institutional Research…and Beyond!</Td>
+    </Tr>
+    <Tr>
+        <Td>27</Td>
+        <Td>2013</Td>
+        <Td>The University of Alabama</Td>
+        <Td>Mr. John McIntosh, Northwest-Shoals Community College</Td>
+        <Td>Dr. Jon C. Acker, The University of Alabama</Td>
+        <Td>Moving the Ball Forward</Td>
+    </Tr>
+</Tbody>
+</Table>
 
-// router.get('/', function(req, res, next) {
-//     res.render('index');
-// });
-
-// router.get('/get-data', function(req, res, next) {
-//     var enrollmentArray = [];
-//     mongo.connect(url, function(err, db) {
-//         // using assert to check if there is an error
-//         // or there is no data at all
-//         assert.equal(null, err);
-//         var cursor = db.collection('enrollment').find();
-//         cursor.forEach(function(data, error) {
-//             assert.equal(null, error);
-//             enrollmentArray.push(data);
-//         }, function() {
-//             db.close();
-//             res.render('index', {item: enrollmentArray});
-//         })
-//     })
-// });
-
-// router.post('/insert', function(req, res, next) {
-//     const item = {
-//         name: req.body.name,
-//         age: req.body.age,
-//         gender: req.body.gender,
-//         father: req.body.father,
-//         mother: req.body.mother
-//     }
-
-//     mongo.connect(url, function(err, db) {
-//         assert.equal(null, err);
-//         // accessing the database using collection enrollment
-//         db.collection('enrollment').insertOne(item, function(errm, result) {
-//             assert.equal(null, err);
-//             console.log("New enrollment inserted");
-//             db.close();
-//         })
-//     })
-// });
-
-// router.post('/delete', function(req, res, next) {
-    
-// })
-
-// // class Admin extends Component {
-
-//   // this.state = {
-//   //   name: '',
-//   //   age: '',
-//   //   gender: '',
-//   // },
-
-//     render() {
-//         return(
-//           <>
-//             <h1>Enrol now</h1>
-//             <section className="insert">
-//               <form action="/insert" method="post">
-//                 <div className="input">
-//                   <label for={this.name}>Name:</label>
-//                   <input type="text" id={this.name} name="name"/>
-//                 </div>
-//                 <div className="input">
-//                   <label for={this.age}>Age</label>
-//                 </div>
-//               </form>
-//             </section>
-//             </>
-//         )
-//     }
-// // }
-
-// export default Admin;
+export default Admin;
