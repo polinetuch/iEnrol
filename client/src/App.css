@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: white;
   height: 150px;
   padding: 20px;
   color: white;
@@ -23,9 +23,7 @@
 }
 
 .navbar {
- 
   margin-top: auto;
-  
 }
 #top-filler {
   margin-bottom: auto;
@@ -36,7 +34,10 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-

@@ -15,7 +15,8 @@ class App extends Component {
     super()
     this.state = {
       loggedIn: false,
-      username: null
+      username: null,
+      isAdmin: true
     }
 
     this.getUser = this.getUser.bind(this)
@@ -64,7 +65,8 @@ class App extends Component {
         {/* Routes to different components */}
         <Route
           exact path="/"
-          component={Home} />
+          // passing isAdmin as prop in an arrow function
+          component= { (props) => <Home isAdmin={this.state.isAdmin}/>  } />
         <Route
           path="/login"
           render={() =>
