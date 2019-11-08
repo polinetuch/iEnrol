@@ -26,7 +26,8 @@
     position: absolute;
     top: -9999px;
     left: -9999px;
-    border-bottom: 2px solid #333;
+    /* border-bottom: 2px solid #333; */
+    background-color: white;
   }
 
   .responsiveTable tbody tr {
