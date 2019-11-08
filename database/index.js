@@ -20,5 +20,9 @@ mongoose.connect(uri).then(
         }
   );
 
+module.exports = {
+    enrolData: require('./models/enrolData')
+}
+
 
 module.exports = mongoose.connection;
