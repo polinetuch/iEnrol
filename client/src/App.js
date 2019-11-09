@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Router } from 'react-router-dom';
 // components
 import Signup from './components/sign-up';
 import LoginForm from './components/login-form'
 import Navbar from './components/navbar';
 import Home from './components/home';
 // import Admin from './components/admin';
+import addEnrollment from './components/newEnrollment/addEnrollment';
+// import editEnrollment from './components/newEnrollment/editEnrollment';
+// import Index from './components/newEnrollment/index';
 // import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 
 
@@ -66,7 +69,8 @@ class App extends Component {
         <Route
           exact path="/"
           // passing isAdmin as prop in an arrow function
-          component= { (props) => <Home isAdmin={this.state.isAdmin}/>  } />
+          component= { (props) => <Home isAdmin={this.state.isAdmin}/>  }>
+        </Route>
         <Route
           path="/login"
           render={() =>
@@ -74,15 +78,15 @@ class App extends Component {
               updateUser={this.updateUser}
             />}
         />
+        <Route path="/addEnrollment" render={() => <addEnrollment/> }></Route>
         <Route
           path="/signup"
           render={() =>
             <Signup/>}
         />
-
       </div>
     );
-  }
+  } 
 }
 
 export default App;

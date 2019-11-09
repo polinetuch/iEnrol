@@ -95,7 +95,7 @@ router.get('/get-data', function(req, res, next) {
     })
 });
 
-router.post('/insert', function(req, res, next) {
+router.post('/addEnrollment', function(req, res, next) {
     const item = {
         name: req.body.name,
         age: req.body.age,
@@ -107,7 +107,7 @@ router.post('/insert', function(req, res, next) {
     mongo.connect(url, function(err, db) {
         assert.equal(null, err);
         // accessing the database using collection enrollment
-        db.collection('enrollment').insertOne(item, function(errm, result) {
+        db.collection('enrollment').insertOne(item, function(err, result) {
             assert.equal(null, err);
             console.log("New enrollment inserted");
             db.close();
