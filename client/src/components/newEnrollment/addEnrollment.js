@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 
-class newEnrollment extends Component {
+class addEnrollment extends Component {
 
     render() {
         return(
         <div>
             <h3>Add New Enrollment</h3>
-            <form>
+            {/* <form>
                 <div class="form-group">
-                    <label>Add student name</label>
+                    <label>Student name</label>
                     <input type="text" class="form-control"/>
                 </div>
-            </form>
+            </form> */}
         </div>
+
         )
     }
 }
 
-export default newEnrollment;
+export default addEnrollment;

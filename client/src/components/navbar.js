@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom';
 import logo from '../logo.svg';
 import '../App.css';
 import axios from 'axios';
+import Admin from './admin';
 
 class Navbar extends Component {
     constructor() {
@@ -38,11 +39,32 @@ class Navbar extends Component {
                 <header className="navbar App-header" id="nav-container">
                     <div className="col-4" >
                         {loggedIn ? (
-                            <section className="navbar-section">
-                                <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
-                                    <span className="text-secondary">Logout</span>
-                                </Link>
-                            </section>
+                            <div className="container">
+                                <nav className="nav navbar-expand-lg navbar-light-bg-light">
+                                <ul>
+                                    <li>
+                                        <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
+                                            <span className="text-secondary">Logout</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"/addEnrollment"} className="nav-link">
+                                            <span className="text-secondary">Add</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"/editEnrollment"} className="nav-link">
+                                            <span className="text-secondary">Edit</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"/index"} className="nav-link">
+                                            <span className="text-secondary">Index</span>
+                                        </Link>
+                                    </li>
+                                </ul>
+                                </nav>
+                            </div>
                         ) : (
                             <section className="navbar-section">
                                 <Link to="/" className="btn btn-link text-secondary">
@@ -50,6 +72,7 @@ class Navbar extends Component {
                                 </Link>
                                 <Link to="/login" className="btn btn-link text-secondary">
                                     <span className="text-secondary">Login</span>
+
 				                </Link>
                                 <Link to="/signup" className="btn btn-link">
                                     <span className="text-secondary">Sign up</span>
