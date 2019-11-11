@@ -78,12 +78,13 @@ class App extends Component {
               updateUser={this.updateUser}
             />}
         />
-        <Route path="/addEnrollment" render={() => <addEnrollment/> }></Route>
+        {/* <Route path="/addEnrollment" render={() => <addEnrollment/> }></Route> */}
         <Route
           path="/signup"
           render={() =>
             <Signup/>}
         />
+
       </div>
     );
   } 
