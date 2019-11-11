@@ -78,47 +78,43 @@ router.get('/', function(req, res, next) {
     res.render('index');
 });
 
-router.get('/get-data', function(req, res, next) {
-    var enrollmentArray = [];
-    mongo.connect(url, function(err, db) {
-        // using assert to check if there is an error
-        // or there is no data at all
-        assert.equal(null, err);
-        var cursor = db.collection('enrollment').find();
-        cursor.forEach(function(data, error) {
-            assert.equal(null, error);
-            enrollmentArray.push(data);
-        }, function() {
-            db.close();
-            res.render('index', {item: enrollmentArray});
-        })
-    })
-});
+// router.get('/addEnrollment', function(req, res, next) {
+//     var enrollmentArray = [];
+//     mongo.connect(url, function(err, db) {
+//         // using assert to check if there is an error
+//         // or there is no data at all
+//         assert.equal(null, err);
+//         var cursor = db.collection('enrollment').find();
+//         cursor.forEach(function(data, error) {
+//             assert.equal(null, error);
+//             enrollmentArray.push(data);
+//         }, function() {
+//             db.close();
+//             res.render('addEnrollment', {item: enrollmentArray});
+//         })
+//     })
+// });
 
-router.post('/addEnrollment', function(req, res, next) {
-    const item = {
-        name: req.body.name,
-        age: req.body.age,
-        gender: req.body.gender,
-        father: req.body.father,
-        mother: req.body.mother
-    }
+// router.post('/addEnrollment', function(req, res, next) {
+//     const item = {
+//         name: req.body.name,
+//         age: req.body.age,
+//         gender: req.body.gender,
+//         father: req.body.father,
+//         mother: req.body.mother
+//     }
 
-    mongo.connect(url, function(err, db) {
-        assert.equal(null, err);
-        // accessing the database using collection enrollment
-        db.collection('enrollment').insertOne(item, function(err, result) {
-            assert.equal(null, err);
-            console.log("New enrollment inserted");
-            db.close();
-        })
-    })
-});
+//     mongo.connect(url, function(err, db) {
+//         assert.equal(null, err);
+//         // accessing the database using collection enrollment
+//         db.collection('enrollment').insertOne(item, function(err, result) {
+//             assert.equal(null, err);
+//             console.log("New enrollment inserted");
+//             db.close();
+//         })
+//     })
+// });
 
-
-router.post('/delete', function(req, res, next) {
-    
-})
 
 
 module.exports = router;
