@@ -26,7 +26,13 @@ class addEnrollment extends Component {
         this.setState({
             name: e.target.value
         })
-    }
+    };
+
+    onChangeAge(e) {
+        this.setState({
+            age: e.target.value
+        })
+    };
 
     render() {
         return(
