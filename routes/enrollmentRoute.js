@@ -39,8 +39,7 @@ enrollmentRoute.route("/api/update/:id").post(function(req, res) {
         if (!response) {
             res.status(404).send("Cannot find data");
         } else {
-            response.first_name = req.body.first_name;
-            response.last_name = req.body.last_name;
+            response.name = req.body.first_name;
             response.age = req.body.age;
             response.gender = req.body.gender;
             response.mother = req.body.mother;
@@ -49,7 +48,7 @@ enrollmentRoute.route("/api/update/:id").post(function(req, res) {
             response.address = req.body.address;
 
             response.save().then(enrollment => {
-                res.json("Update is sucessfully!");
+                res.json("Update is sucessfully!" + enrollment);
             });
         };
     });
