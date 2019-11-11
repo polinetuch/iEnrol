@@ -6,12 +6,12 @@ class addEnrollment extends Component {
         return(
         <div>
             <h3>Add New Enrollment</h3>
-            {/* <form>
+            <form>
                 <div class="form-group">
                     <label>Student name</label>
                     <input type="text" class="form-control"/>
                 </div>
-            </form> */}
+            </form>
         </div>
 
         )
