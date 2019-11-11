@@ -12,9 +12,9 @@ class Home extends Component {
     };
 
     render() {
-        const imageStyle = {
-            width: 400
-        };
+        // const imageStyle = {
+        //     width: 400
+        // };
         
         return (
             <>
