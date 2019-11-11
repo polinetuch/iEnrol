@@ -34,16 +34,83 @@ class addEnrollment extends Component {
         })
     };
 
+    onChangeGender(e) {
+        this.setState({
+            gender: e.target.value
+        })
+    };
+
+    onChangeMotherName(e) {
+        this.setState({
+            mother: e.target.value
+        })
+    };
+
+    onChangeFatherName(e) {
+        this.setState({
+            father: e.target.value
+        })
+    }
+
+    onChangeContact(e) {
+        this.setState({
+            contact: e.target.value
+        })
+    };
+
+    onChangeAddress(e) {
+        this.setState({
+            address: e.target.value
+        })
+    };
+
+    onSubmit(e) {
+        e.preventDefault();
+        const object = {
+            name: this.state.name,
+            age: this.state.age,
+            gender: this.state.gender,
+            mother: this.state.mother,
+            father: this.state.father,
+            contact: this.state.contact,
+            address: this.state.address
+        }
+    }
+
+
     render() {
         return(
         <div>
             <h3>Add New Enrollment</h3>
-            <form>
-                <div class="form-group">
-                    <label>Student name</label>
-                    <input type="text" class="form-control"/>
-                </div>
-            </form>
+                <form onSubmit={this.onSubmit}>
+
+                    <div className="form-group">
+                        <label>Student Name: </label>
+                        <input 
+                        type="text"
+                        className="form-control"
+                        value={this.state.name}
+                        onChange={this.onChangeStudentName} />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Student Age: </label>
+                        <input 
+                        type="text"
+                        className="form-control"
+                        value={this.state.age}
+                        onChange={this.onChangeAge} />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Student Gender: </label>
+                        <input 
+                        type="text"
+                        className="form-control"
+                        value={this.state.gender}
+                        onChange={this.onChangeGender} />
+                    </div>
+                </form>
         </div>
 
         )
