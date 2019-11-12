@@ -6,8 +6,8 @@ import Signup from './components/sign-up';
 import LoginForm from './components/login-form'
 import Navbar from './components/navbar';
 import Home from './components/home';
-// import Admin from './components/admin';
-import addEnrollment from './components/newEnrollment/addEnrollment';
+import Admin from './components/admin';
+import AddEnrollment from './components/newEnrollment/addEnrollment';
 // import editEnrollment from './components/newEnrollment/editEnrollment';
 // import Index from './components/newEnrollment/index';
 // import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
@@ -19,12 +19,28 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       username: null,
-      isAdmin: true
+      isAdmin: true,
+      name: "",
+      age: "",
+      gender: "",
+      mother: "",
+      father: "",
+      contact: "",
+      address: ""
     }
 
     this.getUser = this.getUser.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
-    this.updateUser = this.updateUser.bind(this)
+    this.updateUser = this.updateUser.bind(this);
+
+    // this.onChangeStudentName = this.onChangeStudentName.bind(this);
+    // this.onChangeAge = this.onChangeAge.bind(this);
+    // this.onChangeGender = this.onChangeGender.bind(this);
+    // this.onChangeMother = this.onChangeMother.bind(this);
+    // this.onChangeFather = this.onChangeFather.bind(this);
+    // this.onChangeContact = this.onChangeContact.bind(this);
+    // this.onChangeAddress = this.onChangeAddress.bind(this);
+    // this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -69,7 +85,7 @@ class App extends Component {
         <Route
           exact path="/"
           // passing isAdmin as prop in an arrow function
-          component= { (props) => <Home isAdmin={this.state.isAdmin}/>  }>
+          component= { (props) => <AddEnrollment isAdmin={this.state.isAdmin}/>  }>
         </Route>
         <Route
           path="/login"
