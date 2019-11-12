@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import TableRow from './tableRow';
 
 class Index extends Component {
 
@@ -8,8 +10,9 @@ class Index extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:3000/ienrol")
+        axios.get("http://localhost:3000/enrollment")
         .then((response) => {
+            console.log("response from axios", response)
             this.setState({ enrollment: response.data });
         })
         .catch(function(error) {
@@ -40,12 +43,12 @@ class Index extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    { this.tableRow() }
+                    { this.TableRow() }
                 </tbody>
             </table>
         </div>
         )
     }
-}
+};
 
-export default index;
+export default Index;

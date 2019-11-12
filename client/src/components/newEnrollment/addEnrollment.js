@@ -100,7 +100,7 @@ class AddEnrollment extends Component {
                 <form onSubmit={this.onSubmit}>
 
                     <div className="form-group">
-                        <label>Student Name: </label>
+                        <label>Student Full Name </label>
                         <input 
                         type="text"
                         className="form-control"
@@ -109,7 +109,7 @@ class AddEnrollment extends Component {
                     </div>
 
                     <div className="form-group">
-                        <label>Student Age: </label>
+                        <label>Student Age </label>
                         <input 
                         type="text"
                         className="form-control"
@@ -118,7 +118,7 @@ class AddEnrollment extends Component {
                     </div>
 
                     <div className="form-group">
-                        <label>Student Gender: </label>
+                        <label>Student Gender </label>
                         <input 
                         type="text"
                         className="form-control"
@@ -127,7 +127,7 @@ class AddEnrollment extends Component {
                     </div>
 
                     <div className="form-group">
-                        <label>Mother's Name: </label>
+                        <label>Mother's Name </label>
                         <input 
                         type="text"
                         className="form-control"
@@ -136,16 +136,16 @@ class AddEnrollment extends Component {
                     </div>
 
                     <div className="form-group">
-                        <label>Father's Name: </label>
+                        <label>Father's Name </label>
                         <input 
                         type="text"
                         className="form-control"
-                        value={this.state.mother}
+                        value={this.state.father}
                         onChange={this.onChangeFather} />
                     </div>
 
                     <div className="form-group">
-                        <label>Contact: </label>
+                        <label>Contact </label>
                         <input 
                         type="text"
                         className="form-control"
