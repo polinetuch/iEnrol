@@ -15,7 +15,7 @@ const Enrollment = new Schema ({
 	address: { type: String }
     }, 
 
-    {collection: "enrollment"}
+    {collection: "ienrol"}
 );
 
-module.exports = mongoose.model("Enrollment", Enrollment);
+module.exports = mongoose.model("ienrol", Enrollment);

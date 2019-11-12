@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
-class addEnrollment extends Component {
+class AddEnrollment extends Component {
     constructor(props) {
         super(props)
         this.onChangeStudentName = this.onChangeStudentName.bind(this);
@@ -74,11 +75,25 @@ class addEnrollment extends Component {
             father: this.state.father,
             contact: this.state.contact,
             address: this.state.address
-        }
+        };
+
+        axios.post("http://localhost:3000/api/add", object).then(res => 
+        console.log(res.data));
+
+        this.setState({
+            name: "",
+            age: "",
+            gender: "",
+            mother: "",
+            father: "",
+            contact: "",
+            address: ""
+        })
     }
 
 
     render() {
+        console.log('triggered Add En', this.props);
         return(
         <div>
             <h3>Add New Enrollment</h3>
@@ -110,11 +125,41 @@ class addEnrollment extends Component {
                         value={this.state.gender}
                         onChange={this.onChangeGender} />
                     </div>
+
+                    <div className="form-group">
+                        <label>Mother's Name: </label>
+                        <input 
+                        type="text"
+                        className="form-control"
+                        value={this.state.mother}
+                        onChange={this.onChangeMother} />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Father's Name: </label>
+                        <input 
+                        type="text"
+                        className="form-control"
+                        value={this.state.mother}
+                        onChange={this.onChangeFather} />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Contact: </label>
+                        <input 
+                        type="text"
+                        className="form-control"
+                        value={this.state.contact}
+                        onChange={this.onChangeContact} />
+                    </div>
+                    <div className="form-group">
+                        <input type="submit" value="Add New Student" className="btn btn-primary"/>
+                    </div>
                 </form>
         </div>
 
         )
     }
 }
-
-export default addEnrollment;
+;
+export default AddEnrollment;
