@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class EditEnrollment extends Component {
 
@@ -15,13 +16,7 @@ class EditEnrollment extends Component {
         this.onChangeAddress = this.onChangeAddress.bind(this);
 
         this.state = {
-            name: "",
-            age: "",
-            gender: "",
-            mother: "",
-            father: "",
-            contact: "",
-            address: ""
+            enrollment: []
         }
     }
 
@@ -32,7 +27,6 @@ class EditEnrollment extends Component {
         }))
         .catch(function (error) {
             console.log("error occurred" + error);
-            res.json(error);
         })
     }
 
@@ -40,6 +34,7 @@ class EditEnrollment extends Component {
         return(
         <div>
             <h3>Edit Enrollment</h3>
+            <Link to={"api/enrollment/edit" + this.state.enrollment._id} className="btn btn-primary">Edit</Link>
         </div>
         )
     }
