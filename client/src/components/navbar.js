@@ -4,12 +4,14 @@ import { Route, Link } from 'react-router-dom';
 import logo from '../logo.svg';
 import '../App.css';
 import axios from 'axios';
-import Admin from './admin';
+import AddEnrollment from './newEnrollment/addEnrollment';
 
 class Navbar extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.logout = this.logout.bind(this)
+        // this.AddEnrollment = this.AddEnrollment.bind(this)
+        
     };
 
     logout(event) {
@@ -43,6 +45,7 @@ class Navbar extends Component {
                                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
                                     <span className="text-secondary">Logout</span>
                                 </Link>
+                                <Link to="/add" className="btn btn-link text-secondary" onClick={this.AddEnrollment}>New Enrollment</Link>
                             </section>
                         ) : (
                             <section className="navbar-section">

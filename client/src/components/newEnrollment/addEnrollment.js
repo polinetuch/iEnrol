@@ -77,7 +77,7 @@ class AddEnrollment extends Component {
             address: this.state.address
         };
 
-        axios.post("http://localhost:3000/api/add", object).then(res => 
+        axios.post("http://localhost:3000/api/enrollment/add", object).then(res => 
         console.log(res.data));
 
         this.setState({

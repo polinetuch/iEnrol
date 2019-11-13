@@ -39,7 +39,7 @@ app.use(passport.session()); // calls the deserializeUser
 
 // Routes
 app.use("/user", user);
-app.use("/enrollmentRoute", enrollmentRoute);
+app.use("/api/enrollment", enrollmentRoute);
 
 // Starting Server 
 app.listen(PORT, () => {
