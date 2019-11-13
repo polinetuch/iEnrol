@@ -1,6 +1,40 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
-class editEnrollment extends Component {
+class EditEnrollment extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.onChangeStudentName = this.onChangeStudentName.bind(this);
+        this.onChangeAge = this.onChangeAge.bind(this);
+        this.onChangeGender = this.onChangeGender.bind(this);
+        this.onChangeMotherName = this.onChangeMotherName.bind(this);
+        this.onChangeFatherName = this.onChangeFatherName.bind(this);
+        this.onChangeContact = this.onChangeContact.bind(this);
+        this.onChangeAddress = this.onChangeAddress.bind(this);
+
+        this.state = {
+            name: "",
+            age: "",
+            gender: "",
+            mother: "",
+            father: "",
+            contact: "",
+            address: ""
+        }
+    }
+
+    componentDidMount() {
+        axios.get("/api/enrollment")
+        .then(res => this.setState({
+            enrollments: res.data
+        }))
+        .catch(function (error) {
+            console.log("error occurred" + error);
+            res.json(error);
+        })
+    }
 
     render() {
         return(
@@ -11,4 +45,4 @@ class editEnrollment extends Component {
     }
 }
 
-export default editEnrollment;
+export default EditEnrollment;

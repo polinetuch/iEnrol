@@ -20,7 +20,7 @@ class Index extends Component {
         });
     }
 
-    tableRow() {
+    TableRow() {
         return this.state.enrollment.map(function(object, i) {
             return <TableRow object={object} key={i} />
         })

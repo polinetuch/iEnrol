@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Route, Link, Router } from 'react-router-dom';
+import './index.css';
 // components
 import Signup from './components/sign-up';
 import LoginForm from './components/login-form'
@@ -86,7 +87,9 @@ class App extends Component {
         <Route
           exact path="/"
           // passing isAdmin as prop in an arrow function
-          component= { (props) => <TableRow isAdmin={this.state.isAdmin}/>  }>
+          component= { (props) => {
+            return <TableRow isAdmin={this.state.isAdmin} username={this.state.username} />;
+          } }>
         </Route>
         <Route
           path="/login"

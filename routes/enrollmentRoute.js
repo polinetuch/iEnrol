@@ -3,43 +3,62 @@ const enrollmentRoute = express.Router();
 const Enrollment = require('../database/models/enrollmentSchema');
 
 // Define a get data route
-enrollmentRoute.route("/api/get-data").get(function(req, res) {
+enrollmentRoute.get('/', function(req, res) {
     Enrollment.find(function(err, data) {
         if (err) {
             console.log("Error in getting data" + data);
         } else {
-            res.json(data + "data received");
-            console.log("data received" + data)
+            res.json(data);
         }
     });
 });
 
+// Define a get username data route
+enrollmentRoute.route("/get-username").get(function(req, res) {
+    Enrollment.findById(req.params.id, (err, data) => {
+        if (err) {
+            console.log("Error in getting username" + data);
+        } else {
+            res.json(data);
+            console.log("getting username", username);
+        }
+    })
+});
+
 // Define an add route to add new student
-enrollmentRoute.route("/api/add").post(function (req, res) {
-    let enrollment = new Enrollment(req.body);
+enrollmentRoute.route("/add").post(function (req, res) {
+    console.log('body', req.body)
+    let enrollment = new Enrollment({
+        name: req.body.name,
+        age: req.body.age,
+        gender: req.body.gender,
+        userId: req.user._id
+    });
     enrollment.save().then(enrollment => {
-        res.status(200).join({enrollment: "New student is successfully added!"});
+        res.status(200).json({ message: "New student is successfully added!" });
     })
     .catch(err => {
+        console.error(err)
         res.status(400).send("Unable to add new student")
     });
 });
 
 // Define an edit route to edit student's data
-enrollmentRoute.route("/api/edit/:id").get(function(req, res) {
+enrollmentRoute.route("/edit/:id").get(function(req, res) {
     let id = req.params.id;
     Enrollment.findById(id, function(error, data) {
         res.json(data);
+        console.log(id);
     });
 });
 
 // Define an update route to update data
-enrollmentRoute.route("/api/update/:id").post(function(req, res) {
+enrollmentRoute.route("/update/:id").post(function(req, res) {
     Enrollment.findById(req.params.id, function(err, response) {
         if (!response) {
             res.status(404).send("Cannot find data");
         } else {
-            response.name = req.body.first_name;
+            response.name = req.body.name;
             response.age = req.body.age;
             response.gender = req.body.gender;
             response.mother = req.body.mother;
@@ -53,7 +72,7 @@ enrollmentRoute.route("/api/update/:id").post(function(req, res) {
         };
     });
 
-    enrollmentRoute.route("/api/delete/:id").get(function (req, res) {
+    enrollmentRoute.route("/delete/:id").get(function (req, res) {
         Enrollment.findByIdAndRemove({_id: req.params.id}, function(err, response) {
             if (err) {
                 res.json(err);
