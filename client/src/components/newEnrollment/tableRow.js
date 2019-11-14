@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import EditEnrollment from './editEnrollment';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
@@ -23,6 +24,7 @@ class TableRow extends Component {
       }
 
     render() {
+        console.log(this.state.enrollments)
         return (
             <Table>
                 <Thead>
@@ -37,8 +39,8 @@ class TableRow extends Component {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {this.state.enrollments.map(({ name, age, gender, mother, father, contact, address }) => (
-                        <Tr>
+                    {this.state.enrollments.map(({ _id, name, age, gender, mother, father, contact, address }) => (
+                        <Tr key={_id}>
                             <Td>{name}</Td>
                             <Td>{age}</Td>
                             <Td>{gender}</Td>
@@ -47,7 +49,7 @@ class TableRow extends Component {
                             <Td>{contact}</Td>
                             <Td>{address}</Td>
                             <Td>
-                                <button className="btn btn-primary">Edit</button>
+                            <Link to={"api/enrollment/edit?id=" + _id} className="btn btn-primary">Edit</Link>
                             </Td>
                             <Td>
                                 <button className="btn btn-danger">Delete</button>
