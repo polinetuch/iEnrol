@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import EditEnrollment from './editEnrollment';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';   
 
@@ -11,21 +10,39 @@ class TableRow extends Component {
         super()
         this.state = {
             enrollments: []
-            
+
         }
     }
 
     componentWillMount() {
         console.log(this.props);
-        axios.get('/api/enrollment/')
+        axios.get('/enrollment/')
             .then(res => this.setState({
                 enrollments: res.data
             }))
       }
 
     render() {
+
+        const tableNotAdmin = (<div>
+            <Table>
+                <Thead>
+                    <Tr>
+                        <Th>Student's Name</Th>
+                        <Th>Age</Th>
+                        <Th>Gender</Th>
+                        <Th>Mother</Th>
+                        <Th>Father</Th>
+                        <Th>Contact</Th>
+                        <Th>Address</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+            </Table>
+        </div>)
+
         console.log(this.state.enrollments)
-        return (
+        const table = this.props.isLoggedIn ? 
             <Table>
                 <Thead>
                     <Tr>
@@ -49,7 +66,7 @@ class TableRow extends Component {
                             <Td>{contact}</Td>
                             <Td>{address}</Td>
                             <Td>
-                            <Link to={"api/enrollment/edit?id=" + _id} className="btn btn-primary">Edit</Link>
+                            <Link to={"/enrollment/edit?id=" + _id} className="btn btn-primary">Edit</Link>
                             </Td>
                             <Td>
                                 <button className="btn btn-danger">Delete</button>
@@ -58,8 +75,10 @@ class TableRow extends Component {
                     ))}
                 </Tbody>
             </Table>
+            : <div>Please log in</div>
+    return (<div>{this.props.isAdmin ? table : tableNotAdmin}</div>)
             
-        )
+        
     }
 }
 

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-// const queryString = require('query-string');
-
-// const parsed = queryString.parse(props.location.search);
 
 class EditEnrollment extends Component {
     
@@ -17,23 +14,39 @@ class EditEnrollment extends Component {
         this.onChangeFatherName = this.onChangeFatherName.bind(this);
         this.onChangeContact = this.onChangeContact.bind(this);
         this.onChangeAddress = this.onChangeAddress.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.postData = this.postData.bind(this);
         
         this.state = {
-            enrollment: []
+            name: "",
+            age: "",
+            gender: "",
+            mother: "",
+            father: "",
+            contact: "",
+            address: "",
+            id: ""
         }
     }
     
     componentDidMount() {
-        axios.get("/api/enrollment/edit" + this.props.match.params.id)
-        .then(res => this.setState({
-            name: res.data.name,
-            age: res.data.age,
-            gender: res.data.gender,
-            mother: res.data.mother,
-            father: res.data.father,
-            contact: res.data.contact,
-            address: res.data.address,
-        }))
+        const urlParams = new URLSearchParams(window.location.search);
+        const paramsID = urlParams.get('id');
+        console.log('paramsID', paramsID);
+        axios.get("/enrollment/edit/" + paramsID)
+        .then(res =>{
+            console.log(res);
+            this.setState({
+                name: res.data.name,
+                age: res.data.age,
+                gender: res.data.gender,
+                mother: res.data.mother,
+                father: res.data.father,
+                contact: res.data.contact,
+                address: res.data.address,
+                id: paramsID
+            })
+        })
         .catch(function (error) {
             console.log("error occurred" + error);
         })
@@ -50,6 +63,55 @@ class EditEnrollment extends Component {
             age: e.target.value
         })
     };
+
+    onChangeGender(e) {
+        this.setState({
+            gender: e.target.value
+        })
+    };
+
+    onChangeMotherName(e) {
+        this.setState({
+            mother: e.target.value
+        })
+    };
+
+    onChangeFatherName(e) {
+        this.setState({
+            father: e.target.value
+        })
+    };
+
+    onChangeContact(e) {
+        this.setState({
+            contact: e.target.value
+        })
+    };
+
+    onChangeAddress(e) {
+        this.setState({
+            address: e.target.value
+        })
+    };
+    
+    postData(data) {
+        axios.post("/enrollment/update/" + this.state.id, data)
+        .then(res => console.log (res))
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        const obj = {
+            name: this.state.name,
+            age: this.state.age,
+            gender: this.state.gender,
+            mother: this.state.mother,
+            father: this.state.father,
+            contact: this.state.contact,
+            address: this.state.address,
+        };
+        this.postData(obj)
+    }
 
     render() {
         return(
@@ -70,11 +132,11 @@ class EditEnrollment extends Component {
                 </div>
                 <div className="form-group">
                     <label>Mother</label>
-                    <input type="text" className="form-control" value={this.state.mother} onChange={this.onChangeMother} />
+                    <input type="text" className="form-control" value={this.state.mother} onChange={this.onChangeMotherName} />
                 </div>
                 <div className="form-group">
                     <label>Father</label>
-                    <input type="text" className="form-control" value={this.state.father} onChange={this.onChangeFather} />
+                    <input type="text" className="form-control" value={this.state.father} onChange={this.onChangeFatherName} />
                 </div>
                 <div className="form-group">
                     <label>Contact</label>
