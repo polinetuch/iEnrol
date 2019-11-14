@@ -24,7 +24,7 @@ class TableRow extends Component {
 
     render() {
 
-        const tableNotAdmin = (<div>
+        const tableNotAdmin = <div>
             <Table>
                 <Thead>
                     <Tr>
@@ -37,10 +37,9 @@ class TableRow extends Component {
                         <Th>Address</Th>
                     </Tr>
                 </Thead>
-                <Tbody>
             </Table>
-        </div>)
-
+        </div>
+        
         console.log(this.state.enrollments)
         const table = this.props.isLoggedIn ? 
             <Table>
