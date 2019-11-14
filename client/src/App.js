@@ -10,7 +10,7 @@ import Home from './components/home';
 import Admin from './components/admin';
 import AddEnrollment from './components/newEnrollment/addEnrollment';
 import TableRow from './components/newEnrollment/tableRow';
-// import editEnrollment from './components/newEnrollment/editEnrollment';
+import EditEnrollment from './components/newEnrollment/editEnrollment';
 // import Index from './components/newEnrollment/index';
 // import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 
@@ -88,7 +88,7 @@ class App extends Component {
           exact path="/"
           // passing isAdmin as prop in an arrow function
           component= { (props) => {
-            return <TableRow isAdmin={this.state.isAdmin} username={this.state.username} />;
+            return <TableRow isLoggedIn={this.state.loggedIn} isAdmin={this.state.isAdmin} username={this.state.username} />;
           } }>
         </Route>
         <Route
@@ -104,7 +104,7 @@ class App extends Component {
           render={() =>
             <Signup/>}
         />
-
+        <Route path="/enrollment/edit" render={() => <EditEnrollment/>}/>
       </div>
     );
   } 
