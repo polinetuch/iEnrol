@@ -45,7 +45,6 @@ class Navbar extends Component {
                                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
                                     <span className="text-secondary">Logout</span>
                                 </Link>
-                                <Link to="/add" className="btn btn-link text-secondary" onClick={this.AddEnrollment}>New Enrollment</Link>
                             </section>
                         ) : (
                             <section className="navbar-section">

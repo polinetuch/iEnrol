@@ -90,7 +90,7 @@ class App extends Component {
           exact path="/"
           // passing isAdmin as prop in an arrow function
           component= { (props) => {
-            return <TableRow isLoggedIn={this.state.loggedIn} isAdmin={this.state.isAdmin} username={this.state.username} id={this.state.uid} />;
+            return <TableRow isLoggedIn={this.state.loggedIn} isAdmin={this.state.isAdmin} username={this.state.username} uid={this.state.uid} />;
           } }>
         </Route>
         <Route
@@ -100,7 +100,7 @@ class App extends Component {
               updateUser={this.updateUser}
             />}
         />
-        {/* <Route path="/addEnrollment" render={() => <addEnrollment/> }></Route> */}
+        <Route path="/enrollment/add" render={() => <EditEnrollment/> }></Route>
         <Route
           path="/signup"
           render={() =>
