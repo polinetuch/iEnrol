@@ -1,7 +1,6 @@
-#root {
-  margin: 10;
-  padding: 10;
-  height: 100vh;
+.App {
+  /* margin: 10;
+  padding: 10; */
+  /* height: 100vh; */
   font-family: sans-serif;
-  background: grey;
 }

@@ -21,14 +21,15 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       username: null,
-      isAdmin: true,
+      isAdmin: false,
       name: "",
       age: "",
       gender: "",
       mother: "",
       father: "",
       contact: "",
-      address: ""
+      address: "",
+      uid: null
     }
 
     this.getUser = this.getUser.bind(this)
@@ -62,7 +63,8 @@ class App extends Component {
 
         this.setState({
           loggedIn: true,
-          username: response.data.user.username
+          username: response.data.user.username,
+          uid: response.data.user._id
         })
       } else {
         console.log('Get user: no user');
@@ -88,7 +90,7 @@ class App extends Component {
           exact path="/"
           // passing isAdmin as prop in an arrow function
           component= { (props) => {
-            return <TableRow isLoggedIn={this.state.loggedIn} isAdmin={this.state.isAdmin} username={this.state.username} />;
+            return <TableRow isLoggedIn={this.state.loggedIn} isAdmin={this.state.isAdmin} username={this.state.username} id={this.state.uid} />;
           } }>
         </Route>
         <Route

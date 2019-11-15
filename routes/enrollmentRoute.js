@@ -1,16 +1,32 @@
 const express = require('express');
 const enrollmentRoute = express.Router();
 const Enrollment = require('../database/models/enrollmentSchema');
+const mongoose = require('mongoose')
 
 // Define a get data route
 enrollmentRoute.get('/', function(req, res) {
-    Enrollment.find(function(err, data) {
-        if (err) {
-            console.log("Error in getting data" + data);
-        } else {
-            res.json(data);
-        }
-    });
+    const isAdmin = req.query.admin
+    const id = req.query.id;
+    
+    if ( isAdmin === "true") {
+        Enrollment.find(function(err, data) {
+            if (err) {
+                console.log("Error in getting data" + data);
+            } else {
+                res.json(data);
+            }
+        });
+    }
+    else {
+        Enrollment.find({ userId: mongoose.Types.ObjectId(id) }, function (err, data) {
+            if (err) {
+                console.log("Error in getting data" + data);
+            } else {
+                res.json(data);
+            }
+        });
+    }
+
 });
 
 // Define a get username data route
