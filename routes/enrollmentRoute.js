@@ -18,6 +18,7 @@ enrollmentRoute.get('/', function(req, res) {
         });
     }
     else {
+        console.log('enrollmentRoute else testing', mongoose.Types.ObjectId(id));
         Enrollment.find({ userId: mongoose.Types.ObjectId(id) }, function (err, data) {
             if (err) {
                 console.log("Error in getting data" + data);
@@ -48,6 +49,10 @@ enrollmentRoute.route("/add").post(function (req, res) {
         name: req.body.name,
         age: req.body.age,
         gender: req.body.gender,
+        mother: req.body.mother,
+        father: req.body.father,
+        contact: req.body.contact,
+        address: req.body.address,
         userId: req.user._id
     });
     enrollment.save().then(enrollment => {

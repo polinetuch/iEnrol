@@ -16,6 +16,7 @@ class EditEnrollment extends Component {
         this.onChangeAddress = this.onChangeAddress.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.postData = this.postData.bind(this);
+        this.updateData = this.updateData.bind(this);
         
         this.state = {
             name: "",
@@ -33,23 +34,26 @@ class EditEnrollment extends Component {
         const urlParams = new URLSearchParams(window.location.search);
         const paramsID = urlParams.get('id');
         console.log('paramsID', paramsID);
-        axios.get("/enrollment/edit/" + paramsID)
-        .then(res =>{
-            console.log(res);
-            this.setState({
-                name: res.data.name,
-                age: res.data.age,
-                gender: res.data.gender,
-                mother: res.data.mother,
-                father: res.data.father,
-                contact: res.data.contact,
-                address: res.data.address,
-                id: paramsID
+        if(paramsID) {
+            axios.get("/enrollment/edit/" + paramsID)
+            .then(res =>{
+                console.log(res);
+                this.setState({
+                    name: res.data.name,
+                    age: res.data.age,
+                    gender: res.data.gender,
+                    mother: res.data.mother,
+                    father: res.data.father,
+                    contact: res.data.contact,
+                    address: res.data.address,
+                    id: paramsID
+                })
             })
-        })
-        .catch(function (error) {
-            console.log("error occurred" + error);
-        })
+            .catch(function (error) {
+                console.log("error occurred" + error);
+            })
+        }
+        
     }
 
     onChangeStudentName(e) {
@@ -94,8 +98,13 @@ class EditEnrollment extends Component {
         })
     };
     
-    postData(data) {
+    updateData(data) {
         axios.post("/enrollment/update/" + this.state.id, data)
+        .then(res => console.log (res))
+    }
+
+    postData(data) {
+        axios.post("/enrollment/add/", data)
         .then(res => console.log (res))
     }
 
@@ -110,13 +119,16 @@ class EditEnrollment extends Component {
             contact: this.state.contact,
             address: this.state.address,
         };
-        this.postData(obj)
+        this.state.id ?
+        this.updateData(obj) : 
+        this.postData(obj);
     }
 
     render() {
+        const label = this.state.id ? 'Edit' : 'Add';
         return(
         <div>
-            <h3>Edit Enrollment</h3>
+            <h3>{`${label} Enrollment`}</h3>
             <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <label>Name</label>
@@ -146,8 +158,12 @@ class EditEnrollment extends Component {
                     <label>Address</label>
                     <input type="text" className="form-control" value={this.state.address} onChange={this.onChangeAddress} />
                 </div>
+                {/* <div className="form-group">
+                    <label>User ID</label>
+                    <input type="text" className="form-control" value={this.state.uid} onChange={this.onChangeUid} />
+                </div> */}
                 <div className="form-group">
-                    <input type="submit" value="Update Enrollment" className="btn btn-primary"/>
+                    <input type="submit" value={`${label} Enrollment`} className="btn btn-primary"/>
                 </div>
             </form>
 
