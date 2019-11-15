@@ -14,16 +14,37 @@ class TableRow extends Component {
         }
     }
 
-    componentWillMount() {
-        console.log(this.props);
-        axios.get('/enrollment/')
+    fetch() {
+        axios.get('/enrollment?id=' + this.props.id + "&admin=" + this.props.isAdmin)
             .then(res => this.setState({
                 enrollments: res.data
             }))
-      }
+    }
+
+    // Fetch the enrollment id
+    componentDidMount() {
+        this.fetch();
+    }
+    // gets called everytime props change
+    componentDidUpdate(prevProps) {
+        // prevProps what it used to
+        // if change that means swap user and check enrollment again || if it's not the same run Fetch function
+        if (this.props.id !== prevProps.id) {
+            this.fetch();
+        } 
+    }
+
+    // componentWillMount() {
+    //     console.log(this.props);
+    //     axios.get('/enrollment?id=' + this.props.id + "&admin=" + this.props.isAdmin)
+    //         .then(res => this.setState({
+    //             enrollments: res.data
+    //         }))
+    //   }
 
     render() {
 
+            // console.log(this.state.enrollments.name)
         const tableNotAdmin = <div>
             <Table>
                 <Thead>
@@ -37,9 +58,23 @@ class TableRow extends Component {
                         <Th>Address</Th>
                     </Tr>
                 </Thead>
+                {/* <Tbody>
+                    {this.state.enrollments.map(({ _id, name, age, gender, mother, father, contact, address}) => {
+                        <Tr key={ _id }>
+                            <Td>{name}</Td>
+                            <Td>{age}</Td>
+                            <Td>{gender}</Td>
+                            <Td>{mother}</Td>
+                            <Td>{father}</Td>
+                            <Td>{contact}</Td>
+                            <Td>{address}</Td>
+                        </Tr>
+                    }
+                    )}
+                </Tbody> */}
             </Table>
         </div>
-        
+
         console.log(this.state.enrollments)
         const table = this.props.isLoggedIn ? 
             <Table>
@@ -76,8 +111,6 @@ class TableRow extends Component {
             </Table>
             : <div>Please log in</div>
     return (<div>{this.props.isAdmin ? table : tableNotAdmin}</div>)
-            
-        
     }
 }
 

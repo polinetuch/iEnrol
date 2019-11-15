@@ -44,7 +44,8 @@ router.post(
 
         var userInfo = {
             username: req.user.username, 
-            isAdmin: isAdmin 
+            isAdmin: isAdmin,
+            uid: req.user._id 
         };
         res.send(userInfo);
     }
