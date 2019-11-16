@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 class EditEnrollment extends Component {
     
@@ -98,15 +97,21 @@ class EditEnrollment extends Component {
         })
     };
     
+    onChangeUid(e) {
+        this.setState({
+            uid: e.target.value
+        })
+    };
+
     updateData(data) {
         axios.post("/enrollment/update/" + this.state.id, data)
         .then(res => console.log (res))
-    }
+    };
 
     postData(data) {
         axios.post("/enrollment/add/", data)
         .then(res => console.log (res))
-    }
+    };
 
     onSubmit(e) {
         e.preventDefault();

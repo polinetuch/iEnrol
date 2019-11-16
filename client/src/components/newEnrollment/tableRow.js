@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+// import "react-super-responsive-table/dist/tablerow   ";
 
 class TableRow extends Component {
 
@@ -27,7 +28,7 @@ class TableRow extends Component {
     componentDidMount() {
         this.props.isLoggedIn && this.fetch();
     }
-    
+
     // gets called everytime props change
     componentDidUpdate(prevProps) {
         // prevProps what it used to
