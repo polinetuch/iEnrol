@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
-// import "react-super-responsive-table/dist/tablerow   ";
+import './tablerow.css';
 
 class TableRow extends Component {
 
@@ -15,17 +15,29 @@ class TableRow extends Component {
     }
 
     fetch() {
-        axios.get('/enrollment?id=' + this.props.id + "&admin=" + this.props.isAdmin)
-            .then(res => {
-                console.log(res);
-                this.setState({
-                    enrollments: res.data
-                });
-            })
+        var fetchData;
+        console.log('fetch ', this.props);
+        if(this.props.isAdmin) {
+            fetchData = axios.get('/enrollment/get');
+        } else {
+            fetchData = axios.get('/enrollment/get/' + this.props.uid);
+        }
+        fetchData.then(res => {
+            console.log(res);
+            this.setState({
+                enrollments: res.data
+            });
+        })
+        .catch(err => {
+            console.log('catch fetch ', this.props);
+            console.log(err)
+        })
+       
     }
 
     // Fetch the enrollment id
     componentDidMount() {
+        console.log('componentDidMount', this.props);
         this.props.isLoggedIn && this.fetch();
     }
 
@@ -37,14 +49,6 @@ class TableRow extends Component {
             this.fetch();
         } 
     }
-
-    // componentWillMount() {
-    //     console.log(this.props);
-    //     axios.get('/enrollment?id=' + this.props.id + "&admin=" + this.props.isAdmin)
-    //         .then(res => this.setState({
-    //             enrollments: res.data
-    //         }))
-    //   }
 
     renderTable = (isAdmin) => {
         return (

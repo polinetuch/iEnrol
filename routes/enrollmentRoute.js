@@ -4,11 +4,11 @@ const Enrollment = require('../database/models/enrollmentSchema');
 const mongoose = require('mongoose')
 
 // Define a get data route
-enrollmentRoute.get('/', function(req, res) {
-    const isAdmin = req.query.admin
-    const id = req.query.id;
+enrollmentRoute.get('/get/:id?', function(req, res) {
+    // const isAdmin = req.query.admin
+    const id = req.params.id;
     
-    if ( isAdmin === "true") {
+    if (!id) {
         Enrollment.find(function(err, data) {
             if (err) {
                 console.log("Error in getting data" + data);
