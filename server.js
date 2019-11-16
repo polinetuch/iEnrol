@@ -1,19 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+var cors = require('cors')
 const session = require('express-session');
 const dbConnection = require('./database');
 const MongoStore = require('connect-mongo')(session);
 const passport = require('./passport');
 const app = express();
+
 const enrollmentRoute = require('./routes/enrollmentRoute');
 const user = require('./routes/user');
-
 // Setting up port and require data for 
 const PORT = process.env.PORT || 3001;
 
 
 // MIDDLEWARE
+app.use(cors())
 app.use(morgan('dev'));
 app.use(
 	bodyParser.urlencoded({

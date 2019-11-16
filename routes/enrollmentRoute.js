@@ -93,15 +93,17 @@ enrollmentRoute.route("/update/:id").post(function(req, res) {
         };
     });
 
-    enrollmentRoute.route("/delete/:id").get(function (req, res) {
-        Enrollment.findByIdAndRemove({_id: req.params.id}, function(err, response) {
-            if (err) {
-                res.json(err);
-            } else {
-                res.json("Successfully deleted");
-            }
-        });
-    });
 });
+
+enrollmentRoute.delete('/delete/:id?', function (req, res) {
+    console.log(req.params)
+    Enrollment.findByIdAndRemove({_id: req.params.id}, function(err, response) {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json({_id : req.params.id});
+        }
+    });
+})
 
 module.exports = enrollmentRoute;

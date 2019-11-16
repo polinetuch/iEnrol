@@ -4,6 +4,11 @@ import axios from 'axios';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import './tablerow.css';
 
+const instance = axios.create({
+    baseURL: 'http://localhost:3001'
+   
+  });
+
 class TableRow extends Component {
 
     constructor(props) {
@@ -14,13 +19,31 @@ class TableRow extends Component {
         }
     }
 
+    delete(id) {
+        // const deleteData;
+        console.log("Delete", this.props);
+        if(this.props.isAdmin) {
+            instance.delete(`/enrollment/delete/${id}`).then((response)=> {
+                console.log("444444444", response.data._id)
+                const newEnrollmentArray = this.state.enrollments.filter((enrollment, index) => {
+                    return enrollment._id !== response.data._id;
+                })
+                this.setState({
+                    enrollments: newEnrollmentArray
+                })
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+    }
+
     fetch() {
-        var fetchData;
+        let fetchData;
         console.log('fetch ', this.props);
         if(this.props.isAdmin) {
-            fetchData = axios.get('/enrollment/get');
+            fetchData = instance.get('/enrollment/get');
         } else {
-            fetchData = axios.get('/enrollment/get/' + this.props.uid);
+            fetchData = instance.get('/enrollment/get/' + this.props.uid);
         }
         fetchData.then(res => {
             console.log(res);
@@ -82,7 +105,7 @@ class TableRow extends Component {
                              {
                                 isAdmin && (
                                 <Td>
-                                    <button className="btn btn-danger">Delete</button>
+                                    <button onClick={() =>{this.delete( _id)}} className="btn btn-danger">Delete</button>
                                 </Td>)
                             }
                         </Tr>

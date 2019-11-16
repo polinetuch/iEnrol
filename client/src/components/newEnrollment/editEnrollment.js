@@ -109,8 +109,10 @@ class EditEnrollment extends Component {
     };
 
     postData(data) {
-        axios.post("/enrollment/add/", data)
-        .then(res => console.log (res))
+        axios.post("/enrollment/add", data)
+        .then(res => {
+            window.location = window.location.origin;
+        })
     };
 
     onSubmit(e) {
@@ -178,7 +180,3 @@ class EditEnrollment extends Component {
 }
 
 export default EditEnrollment;
-
-// get value from query string
-// if value contains id then make an axios fetch enrollment by id
-// update the form field 

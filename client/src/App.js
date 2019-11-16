@@ -33,7 +33,6 @@ class App extends Component {
     }
 
     this.getUser = this.getUser.bind(this)
-    this.componentDidMount = this.componentDidMount.bind(this)
     this.updateUser = this.updateUser.bind(this);
 
   //   this.onChangeStudentName = this.onChangeStudentName.bind(this);
@@ -55,7 +54,7 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get('/user/').then(response => {
+    axios.get('/user').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
       if (response.data.user) {
@@ -64,6 +63,7 @@ class App extends Component {
         this.setState({
           loggedIn: true,
           username: response.data.user.username,
+          isAdmin: response.data.user.isAdmin,
           uid: response.data.user._id
         })
       } else {
