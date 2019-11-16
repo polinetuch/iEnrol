@@ -4,7 +4,7 @@ import { Route, Link } from 'react-router-dom';
 import logo from '../logo.svg';
 import '../App.css';
 import axios from 'axios';
-import AddEnrollment from './newEnrollment/addEnrollment';
+import AddEnrollment from './newEnrollment/addEnrollment.js';
 
 class Navbar extends Component {
     constructor(props) {
