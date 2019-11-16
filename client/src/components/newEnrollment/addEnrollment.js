@@ -19,7 +19,8 @@ class AddEnrollment extends Component {
             mother: "",
             father: "",
             contact: "",
-            address: ""
+            address: "",
+            isAdmin: false
         }
     }
 
@@ -93,7 +94,7 @@ class AddEnrollment extends Component {
 
 
     render() {
-        console.log('triggered Add En', this.props);
+        console.log('triggered Add En', this.props.isAdmin);
         return(
         <div>
             <h3>Add New Enrollment</h3>

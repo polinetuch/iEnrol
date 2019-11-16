@@ -90,7 +90,10 @@ class App extends Component {
           exact path="/"
           // passing isAdmin as prop in an arrow function
           component= { (props) => {
-            return <TableRow isLoggedIn={this.state.loggedIn} isAdmin={this.state.isAdmin} username={this.state.username} uid={this.state.uid} />;
+            return (this.state.loggedIn ? 
+                  <TableRow isLoggedIn={this.state.loggedIn} isAdmin={this.state.isAdmin} username={this.state.username} uid={this.state.uid} />
+                  : <LoginForm updateUser={this.updateUser} />
+                  )
           } }>
         </Route>
         <Route
