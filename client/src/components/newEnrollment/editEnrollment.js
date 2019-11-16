@@ -105,7 +105,9 @@ class EditEnrollment extends Component {
 
     updateData(data) {
         axios.post("/enrollment/update/" + this.state.id, data)
-        .then(res => console.log (res))
+        .then(res => {
+            window.location = window.location.origin
+        })
     };
 
     postData(data) {

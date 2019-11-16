@@ -8,7 +8,7 @@ import LoginForm from './components/login-form'
 import Navbar from './components/navbar';
 import Home from './components/home';
 import Admin from './components/admin';
-import AddEnrollment from './components/newEnrollment/addEnrollment';
+import AddEnrollment from './components/newEnrollment/addEnrollment.js';
 import TableRow from './components/newEnrollment/tableRow';
 import EditEnrollment from './components/newEnrollment/editEnrollment';
 // import Index from './components/newEnrollment/index';
