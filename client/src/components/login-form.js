@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-// import './asset/login-form.css';
-// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class LoginForm extends Component {
     constructor() {

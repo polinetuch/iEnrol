@@ -33,9 +33,10 @@ class TableRow extends Component {
         }
     };
 
+    // if isAdmin is true, fetch all data
+    // if isAdmin is false, only fetch data related to the uid (user login id)
     fetch() {
         let fetchData;
-        // console.log('fetch ', this.props);
         if(this.props.isAdmin) {
             fetchData = instance.get('/enrollment/get');
         } else {
@@ -48,7 +49,6 @@ class TableRow extends Component {
             });
         })
         .catch(err => {
-            // console.log('catch fetch ', this.props);
             console.log(err)
         })
        
@@ -56,7 +56,6 @@ class TableRow extends Component {
 
     // Fetch the enrollment id
     componentDidMount() {
-        // console.log('componentDidMount', this.props);
         this.props.isLoggedIn && this.fetch();
     }
 
@@ -71,7 +70,7 @@ class TableRow extends Component {
 
     renderTable = (isAdmin) => {
         return (
-            <Table bordered>
+            <Table>
                 <Thead>
                     <Tr>
                         <Th>Student's Name</Th>
@@ -113,10 +112,7 @@ class TableRow extends Component {
 
     render() {
 
-            // console.log(this.state.enrollments.name)
-
         console.log(this.state.enrollments)
-        // const table = 
             
         return (this.props.isLoggedIn ?  <div>
             <Link to="/enrollment/add/" className="btn btn-primary add" onClick={this.AddEnrollment}>New Enrollment</Link>
