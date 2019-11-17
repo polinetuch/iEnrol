@@ -81,7 +81,7 @@ class LoginForm extends Component {
                 <button type="submit" className="btn btn-primary btn-block" onClick={this.handleSubmit}>Submit</button>
                
                 { this.state.showError ?  <div class="alert alert-danger" >
-                <strong>Login Error.</strong> Invalid username or password
+                <strong>Invalid username or password</strong>
                 </div>  : null }          
             </form>
             </div>
