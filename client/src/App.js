@@ -6,7 +6,7 @@ import './index.css';
 import Signup from './components/sign-up';
 import LoginForm from './components/login-form'
 import Navbar from './components/navbar';
-import Home from './components/home';
+// import Home from './components/home';
 import Admin from './components/admin';
 import AddEnrollment from './components/newEnrollment/addEnrollment.js';
 import TableRow from './components/newEnrollment/tableRow';
