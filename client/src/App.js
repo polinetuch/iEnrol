@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Route, Link, Router } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './index.css';
 // components
 import Signup from './components/sign-up';
 import LoginForm from './components/login-form'
 import Navbar from './components/navbar';
-// import Home from './components/home';
-import Admin from './components/admin';
-import AddEnrollment from './components/newEnrollment/addEnrollment.js';
+// import Admin from './components/admin';
+// import AddEnrollment from './components/newEnrollment/addEnrollment.js';
 import TableRow from './components/newEnrollment/tableRow';
 import EditEnrollment from './components/newEnrollment/editEnrollment';
-// import Index from './components/newEnrollment/index';
-// import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import Home from './components/home';
+
 
 
 class App extends Component {
@@ -86,6 +85,7 @@ class App extends Component {
           <h3>Welcome, {this.state.username}!</h3>
         }
         {/* Routes to different components */}
+        <Home />
         <Route
           exact path="/"
           // passing isAdmin as prop in an arrow function
