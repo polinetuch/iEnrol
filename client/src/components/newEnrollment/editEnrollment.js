@@ -48,55 +48,7 @@ class EditEnrollment extends Component {
             })
         }
         
-    }
-
-    // onChangeStudentName(e) {
-    //     this.setState({
-    //         name: e.target.value
-    //     })
-    // };
-
-    // onChangeAge(e) {
-    //     this.setState({
-    //         age: e.target.value
-    //     })
-    // };
-
-    // onChangeGender(e) {
-    //     this.setState({
-    //         gender: e.target.value
-    //     })
-    // };
-
-    // onChangeMotherName(e) {
-    //     this.setState({
-    //         mother: e.target.value
-    //     })
-    // };
-
-    // onChangeFatherName(e) {
-    //     this.setState({
-    //         father: e.target.value
-    //     })
-    // };
-
-    // onChangeContact(e) {
-    //     this.setState({
-    //         contact: e.target.value
-    //     })
-    // };
-
-    // onChangeAddress(e) {
-    //     this.setState({
-    //         address: e.target.value
-    //     })
-    // };
-    
-    // onChangeUid(e) {
-    //     this.setState({
-    //         uid: e.target.value
-    //     })
-    // };
+    };
 
     onChangeData = e => {
         const { name, value } = e.target;
