@@ -91,7 +91,7 @@ class EditEnrollment extends Component {
     render() {
         const label = this.state.id ? 'Edit' : 'Add';
         return(
-        <div>
+        <div className="container">
             <h3>{`${label} Enrollment`}</h3>
             <form onSubmit={this.onSubmit}>
                 <div className="form-group">
@@ -127,7 +127,7 @@ class EditEnrollment extends Component {
                     <input type="text" className="form-control" name="userId" value={this.state.uid} onChange={this.onChangeData} />
                 </div>
                 <div className="form-group">
-                    <button type="submit" value={`${label} Enrollment`} className="btn btn-primary"/>
+                    <button className="btn btn-primary" type="submit" value={`${label} Enrollment`}>Submit</button>
                 </div>
             </form>
 
