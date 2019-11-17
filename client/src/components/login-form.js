@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+// import './asset/login-form.css';
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class LoginForm extends Component {
     constructor() {
@@ -55,28 +57,38 @@ class LoginForm extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
-                <div className="logmod">
-                    <div className="logmod__wrapper">
-                        <span className="logmod__close">Close</span>
-                        <div className="logmod__container">
-                            <ul className="logmod__tabs">
-                                <li data-tabtar="lgm-2">
-                                    <a href="login">Login</a>
-                                </li>
-                                <li data-tabtar="lgm-2"> 
-                                    <a href="singup">Sign Up</a>
-                                </li>
-                            </ul>
-                            <div className="logmod__tab-wrapper">
-                                <div className="logmod__tab lgm-1">
-                                    <div className="logmod__heading">
-                                        <span className="logmod__heading-subtitle">Enter your username and password</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div className="auth-wrapper">
+                    <div className="auth-inner">
+                <form>
+                <h3>Login In</h3>
+                <div className="form-group">
+                    <label  className="custom-control-label" htmlFor="username">Username</label>
+                    <input className="form-input" 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Username"
+                        className="form-label"
+                        value={this.state.username} 
+                        onChange={this.handleChange}
+                        />
                 </div>
+
+                <div className="form-group">
+                    <label  className="custom-control-label" htmlFor="password">Password</label>
+                    <input className="form-input"
+                                    placeholder="password"
+                                    type="password"
+                                    name="password"
+                                    value={this.state.password}
+                                    onChange={this.handleChange} />
+                </div>
+                <button className="btn btn-primary col-1 col-mr-auto"
+                    onClick={this.handleSubmit}
+                    type="submit">Submit</button>
+            </form>
+            </div>
+            </div>
             )
         }
     }

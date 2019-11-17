@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { Route, Link } from 'react-router-dom';
-import logo from '../logo.svg';
+// import logo from '../logo.svg';
 import '../App.css';
 import axios from 'axios';
 import AddEnrollment from './newEnrollment/addEnrollment.js';
@@ -39,6 +39,10 @@ class Navbar extends Component {
         return (
             <div>
                 <header className="navbar App-header" id="nav-container">
+                <div className="col-4 col-mr-auto">
+                <div id="top-filler"></div>
+                    <h1 className="App-title">iEnrol</h1>
+                </div>
                     <div className="col-4" >
                         {loggedIn ? (
                             <section className="navbar-section">
@@ -48,9 +52,9 @@ class Navbar extends Component {
                             </section>
                         ) : (
                             <section className="navbar-section">
-                                {/* <Link to="/" className="btn btn-link text-secondary">
+                                <Link to="/" className="btn btn-link text-secondary">
                                     <span className="text-secondary">Home</span>
-                                </Link> */}
+                                </Link>
                                 <Link to="/login" className="btn btn-link text-secondary">
                                     <span className="text-secondary">Login</span>
 				                </Link>
@@ -59,11 +63,6 @@ class Navbar extends Component {
 				                </Link>
                             </section>
                             )}
-                    </div>
-                    <div className="col-4 col-mr-auto">
-                    <div id="top-filler"></div>
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <h1 className="App-title">iEnrol</h1>
                     </div>
                 </header>
             </div>
