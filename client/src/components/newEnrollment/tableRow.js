@@ -75,7 +75,7 @@ class TableRow extends Component {
 
     renderTable = (isAdmin) => {
         return (
-            <Table>
+            <Table bordered>
                 <Thead>
                     <Tr>
                         <Th>Student's Name</Th>
