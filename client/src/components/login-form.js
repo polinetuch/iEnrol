@@ -57,35 +57,28 @@ class LoginForm extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
+
                 <div className="auth-wrapper">
                     <div className="auth-inner">
                 <form>
                 <h3>Login In</h3>
+
                 <div className="form-group">
-                    <label  className="custom-control-label" htmlFor="username">Username</label>
-                    <input className="form-input" 
-                        type="text" 
-                        id="username" 
-                        name="username" 
-                        placeholder="Username"
-                        className="form-label"
-                        value={this.state.username} 
-                        onChange={this.handleChange}
-                        />
+                    <label>Username</label>
+                    <input type="text" className="form-control" id="username"
+						name="username"
+						placeholder="Username"
+						value={this.state.username}
+						onChange={this.handleChange}  />
                 </div>
 
                 <div className="form-group">
-                    <label  className="custom-control-label" htmlFor="password">Password</label>
-                    <input className="form-input"
-                                    placeholder="password"
-                                    type="password"
-                                    name="password"
-                                    value={this.state.password}
-                                    onChange={this.handleChange} />
+                    <label>Password</label>
+					<input type="text" className="form-control" name="password" placeholder="password"
+					value={this.state.password}
+					onChange={this.handleChange} />
                 </div>
-                <button className="btn btn-primary col-1 col-mr-auto"
-                    onClick={this.handleSubmit}
-                    type="submit">Submit</button>
+                <button type="submit" className="btn btn-primary btn-block" onClick={this.handleSubmit}>Submit</button>
             </form>
             </div>
             </div>
