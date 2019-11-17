@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-// import { Redirect } from 'react-router-dom';
-import { Route, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import logo from '../logo.svg';
 import '../App.css';
 import axios from 'axios';
-// import AddEnrollment from './newEnrollment/addEnrollment.js';
 
 class Navbar extends Component {
     constructor(props) {
         super(props)
         this.logout = this.logout.bind(this)
-        // this.AddEnrollment = this.AddEnrollment.bind(this)
-        
     };
 
     logout(event) {
@@ -28,6 +25,7 @@ class Navbar extends Component {
           }
         }).catch(error => {
             console.log('Logout error')
+            
         })
       };
 
