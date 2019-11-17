@@ -61,7 +61,7 @@ class LoginForm extends Component {
                 <div className="auth-wrapper">
                     <div className="auth-inner">
                 <form>
-                <h3>Login In</h3>
+                <h3>Login</h3>
 
                 <div className="form-group">
                     <label>Username</label>
@@ -81,7 +81,7 @@ class LoginForm extends Component {
                 <button type="submit" className="btn btn-primary btn-block" onClick={this.handleSubmit}>Submit</button>
                
                 { this.state.showError ?  <div class="alert alert-danger" >
-                <strong>Login Error.</strong> Invalid credentials.
+                <strong>Login Error.</strong> Invalid username or password
                 </div>  : null }          
             </form>
             </div>
