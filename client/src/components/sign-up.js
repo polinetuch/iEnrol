@@ -35,7 +35,7 @@ class Signup extends Component {
 			if (!response.data.errmsg) {
 				console.log('successful signup')
 				this.setState({ //redirect to login page
-				redirectTo: '/login'
+				redirectTo: 'enrollment/login'
 				})
 			}
 			else {
@@ -61,36 +61,14 @@ class Signup extends Component {
 						value={this.state.username}
 						onChange={this.handleChange}  />
                 </div>
-                {/* <div className="form-group">
-                    <label className="custom-control-label" htmlFor="username">Username</label>
-                    <input className="form-input"
-						type="text"
-						id="username"
-						name="username"
-						placeholder="Username"
-						value={this.state.username}
-						onChange={this.handleChange} 
-					/>
-                </div> */}
 
 				<div className="form-group">
-                    <label>Password</label>
-					<input type="text" className="form-control" name="password" placeholder="password"
+                    <label htmlFor="password">Password</label>
+					<input type="password" className="form-control" name="password" placeholder="password"
 					value={this.state.password}
 					onChange={this.handleChange} />
                 </div>
 
-                {/* <div className="form-group">
-                    <label className="custom-control-label" htmlFor="password">Password</label>
-                    <input 
-						className="form-input"
-						placeholder="password"
-						type="password"
-						name="password"
-						value={this.state.password}
-						onChange={this.handleChange}
-					/>
-                </div> */}
 				<button type="submit" className="btn btn-primary btn-block" onClick={this.handleSubmit}>Sign Up</button>
             </form>
 			</div>

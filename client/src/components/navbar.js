@@ -37,56 +37,60 @@ class Navbar extends Component {
         console.log(this.props);
         
         return (
-            <div>
+            
                 <nav className="nav bar navbar-expand-lg navbar-light bg-light">
                     <a className="navbar-brand" href="/"><h1>iEnrol</h1></a>
                     <button className="navbar-toggler" 
                         type="button" 
                         data-toggle="collapse" 
-                        data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
+                        data-target="#navbarNav" 
+                        aria-controls="navbarNav" 
+                        aria-expanded="false" 
                         aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav mr-auto">
+                        <div className="collapse navbar-collapse" id="navbarNav">
+                            <ul className="navbar-nav">
                                 {loggedIn ? (
                                 <li className="nav-item active">
-                                    <Link to="/logout" className="btn btn-primary" onClick={this.logout}>
-                                        <span className="text">Logout</span>
-                                    </Link>
+                                    <a className="nav-link">
+                                        <Link to="/logout" className="btn btn-primary" onClick={this.logout}>
+                                            <span className="text">Logout</span>
+                                        </Link>
+                                    </a>
                                     
                                 </li>
                                 ) : (
                                     <>
                                 <li className="nav-item">
-                                    
-                                    <Link to="/" className="btn btn-link text-secondary">
-                                    <span className="text-secondary">Home</span>
-                                </Link>
+                                    <a className="nav-link">
+                                        <Link to="/" className="btn btn-link text-secondary">
+                                        <span className="text-secondary">Home</span>
+                                        </Link>
+                                    </a>
                                     
                                 </li>
                                 <li className="nav-item">
-                                    
+                                    <a className="nav-link">
                                         <Link to="/login" className="btn btn-link text-secondary">
                                             <span className="text-secondary">Login</span>
                                         </Link>
-                                    
+                                    </a>
                                 </li>
                                 <li className="nav-item">
-                                    
+                                    <a className="nav-link">
                                     <Link to="/signup" className="btn btn-link text-secondary">
                                     <span className="text-secondary">Sign up</span>
 				                    </Link>
-                                    
+                                    </a>
                                 </li>
+                                
                                 </>
                                 )}
                             </ul>
                             </div>
                     </nav>
-                    </div>
+                    
                         
         );
 
