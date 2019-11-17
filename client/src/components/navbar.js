@@ -38,38 +38,59 @@ class Navbar extends Component {
         
         return (
             <div>
-                <header className="navbar App-header" id="nav-container">
-                <div className="col-4 col-mr-auto">
-                <div id="top-filler"></div>
-                    <h1 className="App-title">iEnrol</h1>
-                </div>
-                    <div className="col-4" >
-                        {loggedIn ? (
-                            <section className="navbar-section">
-                                <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
-                                    <span className="text-secondary">Logout</span>
-                                </Link>
-                            </section>
-                        ) : (
-                            <section className="navbar-section">
-                                <Link to="/" className="btn btn-link text-secondary">
+                <nav className="nav bar navbar-expand-lg navbar-light bg-light">
+                    <a className="navbar-brand" href="#">iEnrol</a>
+                    <button className="navbar-toggler" 
+                        type="button" 
+                        data-toggle="collapse" 
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                    </button>
+                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul className="navbar-nav mr-auto">
+                                {loggedIn ? (
+                                <li className="nav-item active">
+                                    <a><Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
+                                        <span className="sr-only">Logout</span>
+                                    </Link>
+                                    </a>
+                                </li>
+                                ) : (
+                                    <>
+                                <li className="nav-item">
+                                    <a>
+                                    <Link to="/" className="btn btn-link text-secondary">
                                     <span className="text-secondary">Home</span>
                                 </Link>
-                                <Link to="/login" className="btn btn-link text-secondary">
-                                    <span className="text-secondary">Login</span>
-				                </Link>
-                                <Link to="/signup" className="btn btn-link">
+                                    </a>
+                                </li>
+                                <li className="nav-item">
+                                    <a>
+                                        <Link to="/login" className="btn btn-link text-secondary">
+                                            <span className="text-secondary">Login</span>
+                                        </Link>
+                                    </a>
+                                </li>
+                                <li className="nav-item">
+                                    <a>
+                                    <Link to="/signup" className="btn btn-link text-secondary">
                                     <span className="text-secondary">Sign up</span>
-				                </Link>
-                            </section>
-                            )}
+				                    </Link>
+                                    </a>
+                                </li>
+                                </>
+                                )}
+                            </ul>
+                            </div>
+                    </nav>
                     </div>
-                </header>
-            </div>
-
+                        
         );
 
     }
 }
 
-export default Navbar
+export default Navbar;

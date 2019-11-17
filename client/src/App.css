@@ -76,7 +76,6 @@ html,
 
 .auth-wrapper {
   display: flex;
-  height: 50%;
   justify-content: center;
   flex-direction: column;
   text-align: left;
