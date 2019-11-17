@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
-import './tablerow.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import "./tablerow.css";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:3001'
-   
+    baseURL: "http://localhost:3001"
   });
 
 class TableRow extends Component {
@@ -15,16 +14,13 @@ class TableRow extends Component {
         super()
         this.state = {
             enrollments: []
-
         }
-    }
+    };
 
     delete(id) {
-        // const deleteData;
         console.log("Delete", this.props);
         if(this.props.isAdmin) {
             instance.delete(`/enrollment/delete/${id}`).then((response)=> {
-                console.log("444444444", response.data._id)
                 const newEnrollmentArray = this.state.enrollments.filter((enrollment, index) => {
                     return enrollment._id !== response.data._id;
                 })
@@ -35,11 +31,11 @@ class TableRow extends Component {
                 console.log(err)
             })
         }
-    }
+    };
 
     fetch() {
         let fetchData;
-        console.log('fetch ', this.props);
+        // console.log('fetch ', this.props);
         if(this.props.isAdmin) {
             fetchData = instance.get('/enrollment/get');
         } else {
@@ -52,7 +48,7 @@ class TableRow extends Component {
             });
         })
         .catch(err => {
-            console.log('catch fetch ', this.props);
+            // console.log('catch fetch ', this.props);
             console.log(err)
         })
        
@@ -60,7 +56,7 @@ class TableRow extends Component {
 
     // Fetch the enrollment id
     componentDidMount() {
-        console.log('componentDidMount', this.props);
+        // console.log('componentDidMount', this.props);
         this.props.isLoggedIn && this.fetch();
     }
 
@@ -97,11 +93,11 @@ class TableRow extends Component {
                             <Td>{father}</Td>
                             <Td>{contact}</Td>
                             <Td>{address}</Td>
-                            {
-                                isAdmin && (<Td>
+                            
+                            <Td>
                                 <Link to={"/enrollment/edit?id=" + _id} className="btn btn-primary">Edit</Link>
-                                </Td>)
-                            }
+                            </Td>
+                            
                              {
                                 isAdmin && (
                                 <Td>
@@ -123,7 +119,7 @@ class TableRow extends Component {
         // const table = 
             
         return (this.props.isLoggedIn ?  <div>
-            <Link to="/enrollment/add/" className="btn btn-link text-secondary" onClick={this.AddEnrollment}>New Enrollment</Link>
+            <Link to="/enrollment/add/" className="btn btn-primary add" onClick={this.AddEnrollment}>New Enrollment</Link>
             {this.renderTable(this.props.isAdmin )}
         </div>
         : <p>Please Login In</p>

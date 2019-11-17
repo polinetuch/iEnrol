@@ -47,6 +47,7 @@ class LoginForm extends Component {
                     redirectTo: '/'
                 });
                 }}).catch(error => {
+                    this.setState({ showError: true });
                     console.log('login error: ')
                     console.log(error);
                 })
@@ -57,7 +58,6 @@ class LoginForm extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
-
                 <div className="auth-wrapper">
                     <div className="auth-inner">
                 <form>
@@ -79,9 +79,14 @@ class LoginForm extends Component {
 					onChange={this.handleChange} />
                 </div>
                 <button type="submit" className="btn btn-primary btn-block" onClick={this.handleSubmit}>Submit</button>
+               
+                { this.state.showError ?  <div class="alert alert-danger" >
+                <strong>Login Error.</strong> Invalid credentials.
+                </div>  : null }          
             </form>
             </div>
             </div>
+            
             )
         }
     }

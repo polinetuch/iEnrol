@@ -1,13 +1,13 @@
+// import required dependencies
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Route } from 'react-router-dom';
 import './index.css';
-// components
+
+//import components
 import Signup from './components/sign-up';
 import LoginForm from './components/login-form'
 import Navbar from './components/navbar';
-// import Admin from './components/admin';
-// import AddEnrollment from './components/newEnrollment/addEnrollment.js';
 import TableRow from './components/newEnrollment/tableRow';
 import EditEnrollment from './components/newEnrollment/editEnrollment';
 import Home from './components/home';
@@ -29,28 +29,19 @@ class App extends Component {
       contact: "",
       address: "",
       uid: null
-    }
+    };
 
-    this.getUser = this.getUser.bind(this)
+    this.getUser = this.getUser.bind(this);
     this.updateUser = this.updateUser.bind(this);
-
-  //   this.onChangeStudentName = this.onChangeStudentName.bind(this);
-  //   this.onChangeAge = this.onChangeAge.bind(this);
-  //   this.onChangeGender = this.onChangeGender.bind(this);
-  //   this.onChangeMotherName = this.onChangeMotherName.bind(this);
-  //   this.onChangeFatherName = this.onChangeFatherName.bind(this);
-  //   this.onChangeContact = this.onChangeContact.bind(this);
-  //   this.onChangeAddress = this.onChangeAddress.bind(this);
-  //   this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount() {
     this.getUser()
-  }
+  };
 
   updateUser (userObject) {
     this.setState(userObject)
-  }
+  };
 
   getUser() {
     axios.get('/user').then(response => {
@@ -73,7 +64,7 @@ class App extends Component {
         })
       }
     })
-  }
+  };
 
   render() {
     return (
@@ -113,6 +104,6 @@ class App extends Component {
       </div>
     );
   } 
-}
+};
 
 export default App;

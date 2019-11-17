@@ -12,7 +12,8 @@ const Enrollment = new Schema ({
 	mother: { type: String },
 	contact: { type: Number },
 	address: { type: String },
-	userId: { type: Schema.Types.ObjectId, ref: 'User' }
+	userId: { type: Schema.Types.ObjectId, ref: 'User' },
+	childUpdate: { type: Schema.Types.ObjectId, ref: 'User' }
     }, 
 
     {collection: "enrollment"}
