@@ -13,7 +13,9 @@ class TableRow extends Component {
     constructor(props) {
         super()
         this.state = {
-            enrollments: []
+            enrollments: [],
+            messages: [],
+            showModal: false
         }
     };
 
@@ -70,43 +72,54 @@ class TableRow extends Component {
 
     renderTable = (isAdmin) => {
         return (
-            <Table>
-                <Thead>
-                    <Tr>
-                        <Th>Student's Name</Th>
-                        <Th>Age</Th>
-                        <Th>Gender</Th>
-                        <Th>Mother</Th>
-                        <Th>Father</Th>
-                        <Th>Contact</Th>
-                        <Th>Address</Th>
-                    </Tr>
-                </Thead>
-                <Tbody>
-                    {this.state.enrollments.map(({ _id, name, age, gender, mother, father, contact, address }) => (
-                        <Tr key={_id}>
-                            <Td>{name}</Td>
-                            <Td>{age}</Td>
-                            <Td>{gender}</Td>
-                            <Td>{mother}</Td>
-                            <Td>{father}</Td>
-                            <Td>{contact}</Td>
-                            <Td>{address}</Td>
-                            
-                            <Td>
-                                <Link to={"/enrollment/edit?id=" + _id} className="btn btn-primary">Edit</Link>
-                            </Td>
-                            
-                             {
-                                isAdmin && (
-                                <Td>
-                                    <button onClick={() =>{this.delete( _id)}} className="btn btn-danger">Delete</button>
-                                </Td>)
-                            }
+            <>
+                {this.state.showModal && <MyModal messages={this.state.messages} />}
+                <Table>
+                    <Thead>
+                        <Tr>
+                            <Th>Student's Name</Th>
+                            <Th>Age</Th>
+                            <Th>Gender</Th>
+                            <Th>Mother</Th>
+                            <Th>Father</Th>
+                            <Th>Contact</Th>
+                            <Th>Address</Th>
+                            <Th>Message</Th>
                         </Tr>
-                    ))}
-                </Tbody>
-            </Table>
+                    </Thead>
+                    <Tbody>
+                        {this.state.enrollments.map(({ _id, name, age, gender, mother, father, contact, address, messages }) => (
+                            <Tr key={_id}>
+                                <Td>{name}</Td>
+                                <Td>{age}</Td>
+                                <Td>{gender}</Td>
+                                <Td>{mother}</Td>
+                                <Td>{father}</Td>
+                                <Td>{contact}</Td>
+                                <Td>{address}</Td>
+                                
+                                <Td>
+                                    <Link to={"/enrollment/edit?id=" + _id} className="btn btn-primary">Edit</Link>
+                                </Td>
+
+                                <Td>
+                                    <button onClick={() => this.setState({ messages, showModal: !this.state.showModal })}>
+                                        {this.state.showModal ? 'Hide' : 'Show'} Modal
+                                    </button>
+                                </Td>
+
+                                {
+                                    isAdmin && (
+                                    <Td>
+                                        <Link to={"/add-message/?id=" + _id} className="btn btn-dark">Add Message</Link>
+                                        <button onClick={() =>{this.delete( _id)}} className="btn btn-danger">Delete</button>
+                                    </Td>)
+                                }
+                            </Tr>
+                        ))}
+                    </Tbody>
+                </Table>
+            </>
         );
     }
 
@@ -122,5 +135,16 @@ class TableRow extends Component {
         )
     }
 }
+
+const MyModal = ({ messages }) => (
+    <div styles={{ position: 'absolute', top: 0 }}>
+        {messages.map(({ message, createdAt }) => (
+            <>
+                <p>message: {message}</p>
+                <p>created at: {createdAt}</p>
+            </>
+        ))}
+    </div>
+)
 
 export default TableRow;

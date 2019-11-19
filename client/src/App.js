@@ -11,6 +11,7 @@ import Navbar from './components/navbar';
 import TableRow from './components/newEnrollment/tableRow';
 import EditEnrollment from './components/newEnrollment/editEnrollment';
 import Home from './components/home';
+import AddMessage from './components/newEnrollment/addMessage';
 
 
 
@@ -76,7 +77,7 @@ class App extends Component {
           <h4>Welcome, {this.state.username}!</h4>
         }
         {/* Routes to different components */}
-        <Home />
+        {/* <Route path="/" render={(props) => {<Home />}}></Route> */}
         <Route
           exact path="/"
           // passing isAdmin as prop in an arrow function
@@ -101,7 +102,8 @@ class App extends Component {
             <Signup/>}
         />
         <Route path="/enrollment/edit" render={() => <EditEnrollment/>}/>
-      </div>
+        <Route path="/add-message/" render={() => <AddMessage isAdmin={this.state.isAdmin}/>}/>
+        </div>
     );
   } 
 };

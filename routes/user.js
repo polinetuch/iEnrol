@@ -41,11 +41,10 @@ router.post(
     passport.authenticate('local'),
     (req, res) => {
         console.log('logged in', req.user);
-        const isAdmin = req.user.username ==='pollyuch'? true : false;
 
         var userInfo = {
             username: req.user.username, 
-            isAdmin: isAdmin,
+            isAdmin: req.user.isAdmin,
             uid: req.user._id 
         };
         res.send(userInfo);
