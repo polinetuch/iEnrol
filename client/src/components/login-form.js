@@ -9,7 +9,7 @@ class LoginForm extends Component {
             username: '',
             password: '',
             redirectTo: null,
-            isAdmin: false
+            isAdmin: false,
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -56,6 +56,8 @@ class LoginForm extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
+                <>
+
                 <div className="auth-wrapper">
                     <div className="auth-inner">
                 <form>
@@ -84,7 +86,7 @@ class LoginForm extends Component {
             </form>
             </div>
             </div>
-            
+            </>
             )
         }
     }

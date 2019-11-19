@@ -19,7 +19,8 @@ class EditEnrollment extends Component {
             father: "",
             contact: "",
             address: "",
-            id: ""
+            id: "",
+            message: ""
         }
     }
     

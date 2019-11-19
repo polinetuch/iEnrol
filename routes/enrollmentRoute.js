@@ -104,6 +104,17 @@ enrollmentRoute.delete('/delete/:id?', function (req, res) {
             res.json({_id : req.params.id});
         }
     });
+});
+
+enrollmentRoute.route("/message/:id").post(async (req, res) => {
+    const enrollment = await Enrollment.findById(req.params.id).exec()
+    if (!enrollment.messages) enrollment.messages = []
+    enrollment.messages.push({
+        message: req.body.message,
+        createdAt: new Date()
+    })
+    enrollment.save()
+    res.sendStatus(200)
 })
 
 module.exports = enrollmentRoute;
