@@ -85,7 +85,10 @@ class TableRow extends Component {
                             <Th>Father</Th>
                             <Th>Contact</Th>
                             <Th>Address</Th>
-                            <Th>Message</Th>
+                            <Th></Th>
+                            <Th></Th>
+                            <Th></Th>
+                            <Th></Th>                     
                         </Tr>
                     </Thead>
                     <Tbody>

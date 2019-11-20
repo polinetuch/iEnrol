@@ -33,7 +33,6 @@ class AddMessage extends Component {
     render() {
         return(
         <div className="container">
-            <h3></h3>
             <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <label>Message</label>

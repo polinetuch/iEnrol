@@ -124,10 +124,6 @@ class EditEnrollment extends Component {
                     <input type="text" className="form-control" name="address" value={this.state.address} onChange={this.onChangeData} />
                 </div>
                 <div className="form-group">
-                    <label>User ID</label>
-                    <input type="text" className="form-control" name="userId" value={this.state.uid} onChange={this.onChangeData} />
-                </div>
-                <div className="form-group">
                     <button className="btn btn-primary" type="submit" value={`${label} Enrollment`}>Submit</button>
                 </div>
             </form>
