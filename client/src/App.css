@@ -110,14 +110,20 @@ html,
 .custom-control-label {
   font-weight: 400;
 }
+
 table,
 td,
 tr {
   border: 2px solid black;
   background-color: white;
   margin: 12px;
+  padding: 5px;
 }
 
-jumbotron {
-  background-image: url("data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj4KIAogIDxwYXR0ZXJuIGlkPSJwYXR0ZXJuLWNoZWNrZXJzIiB4PSIwIiB5PSIwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiID4KICAgIDxyZWN0IHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoxOyBzdHJva2U6cmdiKDAsMCwwKSIgY2xhc3M9ImNoZWNrZXIiIHg9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB5PSIwIi8+CiAgICA8cmVjdCBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6MTsgc3Ryb2tlOnJnYigwLDAsMCkiIGNsYXNzPSJjaGVja2VyIiB4PSIxMDAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB5PSIxMDAiLz4KICA8L3BhdHRlcm4+CiAgCiAgPHJlY3Qgc3R5bGU9InN0cm9rZS13aWR0aDoxOyBzdHJva2U6cmdiKDAsMCwwKSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuLWNoZWNrZXJzKSIgLz4KICAKPC9zdmc+");
+#message {
+  border: 1px solid black;
+  background-color: white;
+  margin-left: 80px;
+  margin-right: 80px;
+  padding: 20px;
 }
