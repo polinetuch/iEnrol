@@ -74,6 +74,7 @@ class TableRow extends Component {
         return (
             <>
                 {this.state.showModal && <MyModal messages={this.state.messages} />}
+                <h3>Student Information</h3>
                 <Table>
                     <Thead>
                         <Tr>

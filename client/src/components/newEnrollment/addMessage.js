@@ -40,7 +40,7 @@ class AddMessage extends Component {
                     <textarea type="message" className="message" name="message" value={this.state.message} onChange={ e => this.setState({message: e.target.value})} />
                 </div>
                 <div className="form-group">
-                    <button className="btn btn-primary" type="submit" value={this.onSubmit}>Submit</button>
+                    <td></td><button className="btn btn-primary" type="submit" value={this.onSubmit}>Submit</button>
                 </div>
             </form>
         </div>

@@ -35,7 +35,10 @@ class Navbar extends Component {
         console.log(this.props);
         
         return (
-            
+            <>
+            <div className="jumbotron">
+                <div className="container">iEnrol</div>
+            </div>
                 <nav className="nav bar navbar-expand-lg navbar-light bg-light">
                     <a className="navbar-brand" href="/"><h1>iEnrol</h1></a>
                     <button className="navbar-toggler" 
@@ -88,7 +91,7 @@ class Navbar extends Component {
                             </ul>
                             </div>
                     </nav>
-                    
+                    </>
                         
         );
 
