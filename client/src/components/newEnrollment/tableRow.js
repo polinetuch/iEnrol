@@ -105,16 +105,20 @@ class TableRow extends Component {
 
                                 <Td>
                                     <button onClick={() => this.setState({ messages, showModal: !this.state.showModal })}>
-                                        {this.state.showModal ? 'Hide' : 'Show'} Modal
+                                        {this.state.showModal ? 'Hide' : 'Show'} Message
                                     </button>
                                 </Td>
 
                                 {
                                     isAdmin && (
+                                    <>
                                     <Td>
-                                        <Link to={"/add-message/?id=" + _id} className="btn btn-dark">Add Message</Link>
-                                        <button onClick={() =>{this.delete( _id)}} className="btn btn-danger">Delete</button>
-                                    </Td>)
+                                        <Link to={"/add-message/?id=" + _id} className="btn btn-primary">Add Message</Link> </Td>
+                                        <Td>
+                                        <button onClick={() =>{this.delete( _id)}} className="sbtn btn-danger">Delete</button>
+                                    </Td>
+                                    </>
+                                    )
                                 }
                             </Tr>
                         ))}
@@ -138,11 +142,11 @@ class TableRow extends Component {
 }
 
 const MyModal = ({ messages }) => (
-    <div styles={{ position: 'absolute', top: 0 }}>
+
+    <div styles={{ position: 'absolute', top: 0}}>
         {messages.map(({ message, createdAt }) => (
             <>
-                <p>message: {message}</p>
-                <p>created at: {createdAt}</p>
+                <p id="message">Message:  {message}</p>
             </>
         ))}
     </div>
